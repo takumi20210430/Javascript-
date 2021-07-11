@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>画像を変更する</title>
+    </head>
+    <body>
+        <div id="picdiv">
+            <img src="dog1.jpg">
+        </div>
+        <input type="button" value="HTMLを書きかえる" onclick="changePic()">
+        <script>
+            function changePic(){
+                var pDiv=document.getElementById("picdiv");
+                pDiv.innerHTML="<img src='dog4.jpg'>";
+            }
+        </script>
+    </body>
+</html>

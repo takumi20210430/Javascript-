@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>画像を変更する</title>
+    </head>
+    <body>
+        <input type="button" value="inu1" onclick="changePic('inu1.jfif')">
+        <input type="button" value="inu2" onclick="changePic('inu2.jfif')">
+        <input type="button" value="inu3" onclick="changePic('inu3.jfif')">
+        <div id="picdiv"></div>
+        
+        <script>
+            function changePic(filename) {
+                var pDiv = document.getElementById("picdiv");
+                pDiv.innerHTML = "<img src=" + filename + ">";
+            }
+        </script>
+    </body>
+</html>
