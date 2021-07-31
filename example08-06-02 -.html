@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>リアルタイム処理</title>
+        <style>
+            table { 
+                border-collapse: collapse; 
+                margin: auto;
+            }
+            
+            td { width: 500px;
+                height: 100px;
+                border: 8px solid pink;
+                font-size: 50px;
+                color: skyBlue;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <table><tr><td id="msgTBL"></td></tr></table>
+        <script>
+            var MESSAGE = ["ママへ","美味しいお弁当","いつもありがとう！"];
+            var msgNo = 0;
+            
+            function changeMsg(){
+                var cell = document.getElementById("msgTBL");
+                cell.textContent = MESSAGE[msgNo];
+                msgNo++;
+                if(msgNo == 3)msgNo =0;
+                setTimeout(changeMsg, 2000);
+            }
+            window.onload = changeMsg();
+        </script>
+    </body>
+</html>
