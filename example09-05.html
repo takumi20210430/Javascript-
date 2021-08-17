@@ -1,0 +1,77 @@
+x<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>ドット絵作成ツール</title>
+        <style>
+            table { 
+                border-collapse: collapse; 
+                }
+            
+            td { 
+                width: 30px;
+                height: 30px;
+                border: solid 1px;
+                }
+        </style>
+    </head>
+    <body>
+        <div>
+            <table id="dotTBL"></table>
+            <br>
+            <table id="ColorTBL"><tr></tr></table>
+        </div>
+        <br>
+        <div>
+            <input type="button" value="消去" onclick="clearCell()">
+        </div>
+        
+        <script>
+            var Matrix_Rows = 16;
+            var Matrix_Cols = 16;
+            var Color_Index = "brack";
+            
+            var dotTbl = document.getElementById("dotTBL");//ドット絵を描くtable
+            var colTbl = document.getElementById("ColorTBL");//色を選ぶtable
+            //ドット絵を描くtableを用意する。
+            function dotTable(){
+                for(var i=0; i<Matrix_Rows; i++){
+                    var row =dotTbl.insertRow(-1);
+                    for (var j=0; j<Matrix_Cols; j++){
+                        var cell = row.insertCell(-1);
+                        cell.onclick = function(){
+                            this.style.backgroundColor = Color_Index;//クリックしたセルに色をつける。
+                        }
+                    }
+                }    
+            }
+            //選べる色を配列で定義
+            var COL_SAMPLE = ["black","gray","white","red","orange","yellow","lime","cyan","blue","magenta"];
+            //色を選ぶtableを用意する。
+            function colorTable(){
+                for(var j=0; j<COL_SAMPLE.length; j++){
+                    var cell = colTbl.rows[0].insertCell(-1);//j番列のセル
+                    cell.style.backgroundColor = COL_SAMPLE[j];
+                    cell.innerHTML = "<img src='pensaki.png'>";
+                    cell.style.padding = "0px";
+                    cell.style.border ="0px";
+                    cell.onclick = function(){
+                        Color_Index = this.style.backgroundColor;//クリックした時に色を取得
+                    }
+                }
+            }
+            //全てのセルを白色にする関数
+            function clearCell(){
+                for(var i=0; i<Matrix_Rows; i++){
+                    for(var j=0; j<Matrix_Cols; j++){
+                        dotTbl.rows[i].cells[j].style.backgroundColor = "white";
+                    }
+                }
+            }
+            window.onload = function(){//HTMLが読み込まれると働く関数
+                dotTable(); //ドット絵を描くtable
+                colorTable(); //色を選ぶtable
+            }
+        </script>
+    </body>
+</html>
